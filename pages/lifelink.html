@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Life-Link Network | Case Study — Aryan Singh</title>
+    <meta name="description" content="Case study: Off-grid SOS communication system using ESP32 + LoRa mesh for disaster response and environmental monitoring." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <style>
+      .case-hero {
+        min-height: 60vh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 8rem 2rem 4rem;
+        position: relative;
+      }
+      .case-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at center bottom, rgba(59,130,246,0.08), transparent 70%);
+        z-index: 0;
+      }
+      .case-hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+      }
+      .case-hero-inner h1 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+      }
+      .case-hero-inner .case-desc {
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+      .case-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+      }
+      .case-tags span {
+        font-size: 0.72rem;
+        font-family: var(--font-mono);
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        background: rgba(15,23,42,0.5);
+      }
+      .case-section {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 3rem clamp(1.5rem, 6vw, 4rem);
+      }
+      .case-section h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.01em;
+      }
+      .case-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.2rem;
+        margin-bottom: 2rem;
+      }
+      .case-card {
+        background: var(--glass);
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        backdrop-filter: blur(12px);
+        transition: border-color 0.3s;
+      }
+      .case-card:hover { border-color: rgba(59,130,246,0.3); }
+      .case-card h3 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .case-card p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+      .pipeline-steps {
+        display: grid;
+        gap: 1rem;
+      }
+      .pipeline-step {
+        display: flex;
+        gap: 1.2rem;
+        align-items: flex-start;
+        padding: 1.2rem 1.5rem;
+        border-radius: 1rem;
+        background: var(--glass);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(12px);
+        transition: border-color 0.3s;
+      }
+      .pipeline-step:hover { border-color: rgba(59,130,246,0.3); }
+      .step-num {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--secondary);
+        background: rgba(59,130,246,0.1);
+        border: 1px solid rgba(59,130,246,0.3);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .step-content h3 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+      .step-content p {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      .challenge-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.2rem;
+      }
+      .challenge-card {
+        padding: 1.3rem;
+        border-radius: 1rem;
+        border: 1px solid var(--border);
+        border-left: 3px solid rgba(59,130,246,0.5);
+        background: var(--glass);
+        backdrop-filter: blur(12px);
+      }
+      .challenge-card h3 {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--secondary);
+        margin-bottom: 0.4rem;
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .challenge-card p {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--muted);
+        transition: color 0.3s;
+        margin-bottom: 2rem;
+      }
+      .back-link:hover { color: var(--primary); }
+    </style>
+  </head>
+  <body>
+    <header class="site-header scrolled">
+      <nav class="navbar">
+        <a class="brand" href="../index.html">Aryan<span class="brand-dot">.</span></a>
+        <div class="nav-links">
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#experience">Experience</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="case-hero">
+        <div class="case-hero-inner">
+          <span class="eyebrow">Case Study</span>
+          <h1>Life-Link Network</h1>
+          <p class="case-desc">Off-grid SOS network using ESP32 + LoRa mesh for resilient emergency response and environmental monitoring.</p>
+          <div class="case-tags">
+            <span>ESP32</span>
+            <span>LoRa</span>
+            <span>Mesh Routing</span>
+            <span>Low Power</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <a class="back-link" href="../index.html#projects">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to Projects
+        </a>
+
+        <h2>Overview</h2>
+        <div class="case-grid">
+          <div class="case-card">
+            <h3>Problem</h3>
+            <p>Disasters can cut off cellular networks, leaving responders without critical communication.</p>
+          </div>
+          <div class="case-card">
+            <h3>Dataset / Input</h3>
+            <p>SOS triggers, sensor telemetry, and GPS coordinates from ESP32 nodes.</p>
+          </div>
+          <div class="case-card">
+            <h3>Approach</h3>
+            <p>Low-power LoRa mesh with edge filtering and reliable message routing.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>System Pipeline</h2>
+        <div class="pipeline-steps">
+          <div class="pipeline-step">
+            <span class="step-num">1</span>
+            <div class="step-content">
+              <h3>Input</h3>
+              <p>ESP32 devices capture SOS requests with GPS metadata.</p>
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <span class="step-num">2</span>
+            <div class="step-content">
+              <h3>System</h3>
+              <p>Edge filtering and LoRa mesh routing across low-power nodes.</p>
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <span class="step-num">3</span>
+            <div class="step-content">
+              <h3>Output</h3>
+              <p>Gateway nodes sync messages to a dashboard for responder dispatch.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>Results</h2>
+        <div class="case-grid">
+          <div class="case-card">
+            <h3>Coverage</h3>
+            <p>Reliable message relay across off-grid regions.</p>
+          </div>
+          <div class="case-card">
+            <h3>Power</h3>
+            <p>Optimized for low power and longer field uptime.</p>
+          </div>
+          <div class="case-card">
+            <h3>Reliability</h3>
+            <p>High message delivery rate under stress tests.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>Challenges & Learnings</h2>
+        <div class="challenge-grid">
+          <div class="challenge-card">
+            <h3>Terrain Variability</h3>
+            <p>Signal stability changed with elevation and obstructions.</p>
+          </div>
+          <div class="challenge-card">
+            <h3>Power Constraints</h3>
+            <p>Balanced sensor frequency with battery limits.</p>
+          </div>
+          <div class="challenge-card">
+            <h3>Reliability</h3>
+            <p>Maintained delivery under packet loss and noise.</p>
+          </div>
+          <div class="challenge-card">
+            <h3>Routing</h3>
+            <p>Shorter hop counts reduced delivery delays.</p>
+          </div>
+          <div class="challenge-card">
+            <h3>Firmware</h3>
+            <p>Sleep cycles extended battery life without missing SOS signals.</p>
+          </div>
+          <div class="challenge-card">
+            <h3>Field Testing</h3>
+            <p>Real-world trials surfaced edge-case interference.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Aryan Singh — Machine Learning Engineer</p>
+      <p class="footer-copy">&copy; 2026 Aryan. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

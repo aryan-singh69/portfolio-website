@@ -1,0 +1,431 @@
+/* ═══════════════════════════════════════════════════════
+   Case Study — Shared Styles
+   Used by all case study pages (earthquake, jarvis, movie, student, netflix)
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Hero ─── */
+.case-hero {
+  min-height: 55vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 7rem 2rem 4rem;
+  position: relative;
+}
+.case-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center bottom, rgba(242,107,58,0.06), transparent 70%);
+  z-index: 0;
+}
+.case-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+.case-hero-inner .case-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+.case-hero-inner h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+.case-hero-inner .case-desc {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.case-tags span {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  background: var(--bg-card);
+}
+
+/* ─── Hero action buttons ─── */
+.case-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.case-hero-actions .action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.3rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--font);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.3s var(--ease);
+  cursor: pointer;
+}
+.case-hero-actions .action-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.case-hero-actions .action-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.case-hero-actions .action-btn--disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+.case-hero-actions .action-badge {
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-pill);
+  line-height: 1;
+}
+.case-hero-actions .badge-soon {
+  background: rgba(0,0,0,0.06);
+  color: var(--text-muted);
+}
+.case-hero-actions .badge-live {
+  background: rgba(16,185,129,0.1);
+  color: #10b981;
+}
+.case-hero-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 0.8rem;
+  font-style: italic;
+}
+
+/* ─── Section ─── */
+.case-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem clamp(1.5rem, 6vw, 4rem);
+}
+.case-section h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.case-text {
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.case-text code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid var(--border);
+}
+
+/* ─── Cards grid ─── */
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+.case-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.case-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.case-card h3 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+.case-card p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+/* ─── Metric cards ─── */
+.metric-card {
+  text-align: center;
+}
+.metric-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  margin-bottom: 0.3rem;
+  line-height: 1.2;
+}
+.metric-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.3rem;
+}
+.metric-detail {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ─── Pipeline steps ─── */
+.pipeline-steps {
+  display: grid;
+  gap: 0.8rem;
+}
+.pipeline-step {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  padding: 1.2rem 1.5rem;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.pipeline-step:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(242,107,58,0.08);
+  border: 1px solid rgba(242,107,58,0.2);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.step-content h3 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--text);
+}
+.step-content p {
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+.step-content code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid var(--border);
+}
+
+/* ─── Challenge cards ─── */
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+.challenge-card {
+  padding: 1.3rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-card);
+}
+.challenge-card h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.challenge-card p {
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+/* ─── Comparison table ─── */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.86rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.compare-table thead {
+  background: rgba(0,0,0,0.03);
+}
+.compare-table th {
+  text-align: left;
+  padding: 0.8rem 1.2rem;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+.compare-table td {
+  padding: 0.7rem 1.2rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+.compare-table tr:last-child td {
+  border-bottom: none;
+}
+.compare-table tbody tr:last-child {
+  background: rgba(242,107,58,0.04);
+}
+.compare-table tbody tr:last-child td {
+  color: var(--text);
+  font-weight: 600;
+}
+.compare-table .highlight-val {
+  color: var(--accent);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+/* ─── Failure cards ─── */
+.failure-card {
+  padding: 1.3rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  border-left: 3px solid #dc2626;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-card);
+}
+.failure-card h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #dc2626;
+  margin-bottom: 0.4rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.failure-card p {
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+/* ─── Info note ─── */
+.case-note {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  padding: 1rem 1.3rem;
+  border-radius: var(--radius-sm);
+  background: rgba(0,0,0,0.02);
+  border: 1px solid var(--border);
+  margin: 1rem 0;
+}
+.case-note strong {
+  color: var(--text-secondary);
+}
+
+/* ─── Architecture image ─── */
+.arch-image-wrap {
+  margin: 1.5rem 0 2rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+}
+.arch-image-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── Sample output ─── */
+.sample-output {
+  background: #1a1a2e;
+  color: #e2e8f0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.8;
+  padding: 1.5rem 2rem;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin: 1rem 0 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+.sample-output .key { color: #7dd3fc; }
+.sample-output .val { color: #86efac; }
+.sample-output .comment { color: #64748b; }
+
+/* ─── Back link ─── */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.3s;
+  margin-bottom: 2rem;
+}
+.back-link:hover { color: var(--accent); }
+
+/* ─── Footer ─── */
+.case-footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
