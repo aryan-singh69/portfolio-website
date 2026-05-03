@@ -113,16 +113,17 @@ button { cursor: pointer; }
    ═════════════════════════════ */
 .hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  padding: 8rem clamp(2rem, 6vw, 6rem) 4rem;
+  justify-content: flex-start;
+  gap: 50px;
+  padding: 80px clamp(2rem, 6vw, 6rem) 40px;
   max-width: 1300px;
   margin: 0 auto;
   overflow: hidden;
+  background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(255, 180, 130, 0.08), transparent),
+              radial-gradient(ellipse 60% 50% at 20% 60%, rgba(130, 230, 200, 0.06), transparent);
 }
 
 /* Faded initials */
@@ -182,7 +183,7 @@ button { cursor: pointer; }
   color: var(--teal);
   font-size: 0.78rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin-bottom: 10px;
   border: 1px solid rgba(13, 147, 115, 0.15);
 }
 .avail-dot {
@@ -199,26 +200,26 @@ button { cursor: pointer; }
   line-height: 1.05;
   letter-spacing: -0.03em;
   color: var(--text);
-  margin-bottom: 0.3rem;
+  margin-bottom: 8px;
 }
 .hero-role {
   font-size: clamp(1.1rem, 1.5vw, 1.5rem);
   font-weight: 500;
   color: var(--text-secondary);
-  margin-bottom: 1.2rem;
+  margin-bottom: 10px;
 }
 .hero-headline {
   font-size: clamp(1rem, 1.3vw, 1.2rem);
   font-weight: 600;
   color: var(--accent);
-  margin-bottom: 0.6rem;
+  margin-bottom: 8px;
 }
 .hero-intro {
   font-size: 1rem;
   color: var(--text-muted);
-  line-height: 1.7;
+  line-height: 1.65;
   max-width: 520px;
-  margin-bottom: 2rem;
+  margin-bottom: 12px;
 }
 
 .hero-actions {
@@ -255,9 +256,11 @@ button { cursor: pointer; }
   position: relative;
   z-index: 1;
   flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 10px;
 }
 .hero-image-frame {
-  width: clamp(260px, 22vw, 340px);
+  width: clamp(220px, 19vw, 290px);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
@@ -919,8 +922,9 @@ button { cursor: pointer; }
     flex-direction: column-reverse;
     text-align: center;
     align-items: center;
-    padding-top: 7rem;
-    gap: 2rem;
+    padding-top: 80px;
+    padding-bottom: 40px;
+    gap: 1.5rem;
   }
   .hero-content {
     max-width: 100%;
@@ -938,8 +942,12 @@ button { cursor: pointer; }
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  .hero-image-wrap {
+    align-self: center;
+    margin-top: 0;
+  }
   .hero-image-frame {
-    width: 200px;
+    width: 180px;
   }
 
   .project-card {
