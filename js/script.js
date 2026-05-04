@@ -45,8 +45,11 @@
   // ─── SMOOTH SCROLL for nav pills ───
   navPills.forEach(pill => {
     pill.addEventListener('click', (e) => {
+      const href = pill.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+
       e.preventDefault();
-      const target = document.querySelector(pill.getAttribute('href'));
+      const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
