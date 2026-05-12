@@ -12,7 +12,7 @@ Machine Learning Engineer portfolio showcasing real-world AI systems, case studi
 - System Design & ML Pipelines
 
 ## 🌐 Live Portfolio
-Coming soon
+https://portfolio-website-kappa-five-11.vercel.app/
 
 ## 📌 About
 Focused on building real-time AI systems that work beyond notebooks, combining machine learning, data pipelines, and system-level thinking.
